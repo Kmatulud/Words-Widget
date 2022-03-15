@@ -6,9 +6,8 @@ body{
 .wrapper{
     display: flex;
     flex-direction: column;
+    margin-top: 10rem;
     align-items: center;
-    width: 100%;
-    margin:auto;
 }
 
 input[type=text] {
@@ -28,4 +27,8 @@ button{
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+}
+
+.red {
+    background-color: red;
 }
