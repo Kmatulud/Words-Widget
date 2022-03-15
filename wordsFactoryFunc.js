@@ -1,8 +1,8 @@
 const WordsCountFactory = () => {
-    let userInput;
+    let userInput = [];
 
     const setWords = (inputValue) => {
-        userInput = inputValue.filter((val) => val.length > 4 );
+        userInput = inputValue.split(" ");
     }
     const getWords = () => {
         return userInput;
