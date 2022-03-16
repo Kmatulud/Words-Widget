@@ -1,6 +1,7 @@
 const inputElem = document.querySelector("#userInput");
 const submitElem = document.querySelector("#submit");
 const msg = document.querySelector("#message");
+const count = document.querySelector("#span")
 
 const wordsCountFunc = WordsCountFactory()
 
@@ -11,15 +12,15 @@ const wordsCount = () => {
     const value = wordsCountFunc.getWords();
 
     let str = "";
-    for (let i = 0; i < value.length; i++) {
-        const element = value[i];
-        if(element.length > 4){
-            str += "<mark style='color: red'>" + element + " </mark> ";
+    value.forEach(element => {
+         if(element.length > 4){
+            str += "<mark> " + element + "</mark> ";
         }else{
             str += element + " ";
         }
-    }
-    msg.innerHTML = str;
+    })
+    msg.innerHTML = str + " ";
+    count.innerHTML = `Count: ${wordsCountFunc.getInputLength()}`
 }
 
 
