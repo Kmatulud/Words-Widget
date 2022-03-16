@@ -1,4 +1,4 @@
-describe("Fruit List", () => {
+describe("Words Widget", () => {
     let wordsFactoryFunction = WordsCountFactory();
 
     it("Should return the user input as an array", () => {
