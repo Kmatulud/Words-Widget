@@ -11,11 +11,16 @@
 <body>
     <div class="wrapper">
         <h1>Words Widget</h1>
+        <span id="span">Word Count: 0</span>
+
         <input type="text" name="input" id="userInput" placeholder="Enter a word or sentence">
         <button type="submit" id="submit">Analyze</button>
         <p id="message"></p>
-        <span id="span">Count: 0</span>
-        <input type="checkbox" name="check" id="hide">
+        <div class="check">
+            <legend>Hide words</legend>
+            <input type="checkbox" name="checkd" id="hide">
+        </div>
+
     </div>
     <script src="./wordsFactoryFunc.js"></script>
     <script src="./index.js"></script>

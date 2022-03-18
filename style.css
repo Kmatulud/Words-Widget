@@ -33,4 +33,7 @@ button{
 .red {
     color: red;
 }
-
+ 
+.check {
+    display: flex;
+}

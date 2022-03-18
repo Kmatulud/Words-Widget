@@ -1,21 +1,26 @@
 const WordsCountFactory = () => {
-    let userInput = [];
+    let longWord = "";
+    let str = "";
 
-    const setWords = (inputValue=[]) => {
-        userInput = inputValue.trim().split(" ");
-    }
-
-    const getWords = () => {
-        return userInput;
+    const setWords = inputValue => {
+        let userInput = inputValue.trim().split(" ");
+        userInput.forEach(input => {
+            if(input.length > 4){
+                str += `<mark> ${input} </mark>`;
+            }
+             else{
+                str += input + " ";
+            }
+        })
+        return str;   
     }
 
     const getInputLength = () => {
-        return getWords().length;
+        return setWords(inputValue).length;
     }
 
     return{
         setWords,
-        getWords,
         getInputLength
     }
 }
