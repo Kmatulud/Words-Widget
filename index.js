@@ -2,7 +2,7 @@ const inputElem = document.querySelector("#userInput");
 const submitElem = document.querySelector("#submit");
 const msg = document.querySelector("#message");
 const count = document.querySelector("#span")
-const checked = document.querySelector("#hide:checked");
+const check = document.querySelector("#hide");
 
 const wordsCountFunc = WordsCountFactory()
 
@@ -10,31 +10,20 @@ const wordsCountFunc = WordsCountFactory()
 
 const wordsCount = () => {
 
-    let userValue = inputElem.value;
-    msg.innerHTML = wordsCountFunc.setWords(userValue);
-    userValue = "";
+    msg.innerHTML = wordsCountFunc.setWords(inputElem.value);
     count.innerHTML = `Word Count: ${wordsCountFunc.getInputLength()}`
+    userValue = "";
 }
 
-const hideAndHighlight = () => {
-    const userValue = inputElem.value;
-    wordsCountFunc.setWords(userValue);
-    const value = wordsCountFunc.getWords();
-
-    let str = "";
-    value.forEach(element => {
-        if(checked){
-            str += "<mark> " + element + "</mark> ";
-        }
-        else{
-            str += element + " ";
-        }     
-    })
-    msg.innerHTML = str + " "; 
-    count.innerHTML = `Word Count: ${wordsCountFunc.getInputLength()}`
-
+const hideWord = () => {
+    if(check.checked){
+        msg.innerHTML = wordsCountFunc.hideShortWord(inputElem.value);
+    }else{
+        msg.innerHTML = wordsCountFunc.setWords(inputElem.value);
+    }
 }
 
 
 
 submitElem.addEventListener("click", wordsCount);
+check.addEventListener("click", hideWord);

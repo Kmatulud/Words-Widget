@@ -3,24 +3,38 @@ const WordsCountFactory = () => {
     let str = "";
 
     const setWords = inputValue => {
-        let userInput = inputValue.trim().split(" ");
-        userInput.forEach(input => {
-            if(input.length > 4){
-                str += `<mark> ${input} </mark>`;
+        let splitValue = inputValue.trim().split(" ");
+        splitValue.forEach(val => {
+            if(val.length > 4){
+                str += `<mark> ${val} </mark>`;
             }
              else{
-                str += input + " ";
+                str += val + " ";
             }
         })
         return str;   
     }
 
+    const hideShortWord = (userInput) => { 
+        let splitInput = userInput.trim().split(" ");
+        splitInput.forEach(val => {
+            if(val.length < 5){
+                userInput = userInput.replace(val, '');
+            }
+            else{
+                userInput = `<mark> ${userInput} </mark>`;
+            }
+        })
+        return userInput;
+    }
+
     const getInputLength = () => {
-        return setWords(inputValue).length;
+        return str.length;
     }
 
     return{
         setWords,
+        hideShortWord,
         getInputLength
     }
 }
