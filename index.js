@@ -4,16 +4,29 @@ const msg = document.querySelector("#message");
 const count = document.querySelector("#span")
 const check = document.querySelector("#hide");
 
-const wordsCountFunc = WordsCountFactory()
-
-
-
 const wordsCount = () => {
+    
+    if (inputElem.value.length === 0){
+        msg.innerHTML = "";
+        count.innerHTML = 0;
+        return
+    }
+    const wordsCountFunc = WordsCountFactory(inputElem.value);
+    const words = wordsCountFunc.getWords();
 
-    msg.innerHTML = wordsCountFunc.setWords(inputElem.value);
-    count.innerHTML = `Word Count: ${wordsCountFunc.getInputLength()}`
-    userValue = "";
+    const wordList = words.map(word => {
+        return `<span class="word ${word.type}">${word.word}
+        <span class="small">(${word.length})</span>
+        </span>`
+    })
+    msg.innerHTML = wordList.join("");
+    if(msg.innerHTML.length === 0){
+        count.innerHTML = 0;
+    }else{
+        count.innerHTML = words.length;
+    }
 }
+
 
 const hideWord = () => {
     if(check.checked){
@@ -26,4 +39,4 @@ const hideWord = () => {
 
 
 submitElem.addEventListener("click", wordsCount);
-check.addEventListener("click", hideWord);
+check.addEventListener("change", hideWord);

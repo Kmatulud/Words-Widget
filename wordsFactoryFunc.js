@@ -1,20 +1,29 @@
-const WordsCountFactory = () => {
-    let longWord = "";
-    let str = "";
+const WordsCountFactory = (inputValue) => {
 
-    const setWords = inputValue => {
-        let splitValue = inputValue.trim().split(" ");
-        splitValue.forEach(val => {
-            if(val.length > 4){
-                str += `<mark> ${val} </mark>`;
-            }
-             else{
-                str += val + " ";
+    const splitValue = inputValue.trim().split(" ");
+ 
+    const getWords = () => {
+        const wordList = splitValue.map(word=>{
+            return {
+                word,
+                length : word.length,
+                type : word.length > 4? "longer": ""
             }
         })
-        return str;   
-    }
+        let longestWord = {
+            length: 0
+        };
+        wordList.forEach((word,index) => {
+            if (word.length > longestWord.length){
+                longestWord = {...word, index};
+            }
+        })
 
+        wordList[longestWord.index].type = "longest";
+        wordList.filter(word => {word.length ===longestWord.length})
+                .forEach(word => word.type = "longest");
+        return wordList; 
+    }
     const hideShortWord = (userInput) => { 
         let splitInput = userInput.trim().split(" ");
         splitInput.forEach(val => {
@@ -27,14 +36,11 @@ const WordsCountFactory = () => {
         })
         return userInput;
     }
+    
 
-    const getInputLength = () => {
-        return str.length;
-    }
 
     return{
-        setWords,
+        getWords,
         hideShortWord,
-        getInputLength
     }
 }
