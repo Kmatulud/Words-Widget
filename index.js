@@ -16,27 +16,27 @@ const wordsCount = () => {
 
     const wordList = words.map(word => {
         return `<span class="word ${word.type}">${word.word}
-        <span class="small">(${word.length})</span>
+        
         </span>`
     })
     msg.innerHTML = wordList.join("");
     if(msg.innerHTML.length === 0){
         count.innerHTML = 0;
     }else{
-        count.innerHTML = words.length;
+        count.innerHTML = `Word Count: ${words.length}`;
     }
 }
 
 
-const hideWord = () => {
-    if(check.checked){
-        msg.innerHTML = wordsCountFunc.hideShortWord(inputElem.value);
-    }else{
-        msg.innerHTML = wordsCountFunc.setWords(inputElem.value);
-    }
-}
+// const hideWord = () => {
+//     if(check.checked){
+//         msg.innerHTML = wordsCountFunc.hideShortWord(inputElem.value);
+//     }else{
+//         msg.innerHTML = wordsCountFunc.setWords(inputElem.value);
+//     }
+// }
 
 
 
 submitElem.addEventListener("click", wordsCount);
-check.addEventListener("change", hideWord);
+// check.addEventListener("change", hideWord);
