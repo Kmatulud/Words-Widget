@@ -27,6 +27,10 @@ const WordsCountFactory = (inputValue) => {
             .forEach(word => word.type = "longest");
         return wordList; 
     }
+
+    const getLongerwords = () => {
+        return getWords().filter(word => word.length > 4);
+    }
     // const hideShortWord = () => { 0
     //     splitInput.forEach(val => {
     //         if(val.length < 5){
@@ -43,6 +47,7 @@ const WordsCountFactory = (inputValue) => {
 
     return{
         getWords,
+        getLongerwords,
         // hideShortWord,
     }
 }
